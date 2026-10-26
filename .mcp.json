@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ourfreemodel-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}

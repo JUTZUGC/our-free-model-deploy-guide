@@ -1,0 +1,105 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "ourfreemodel",
+    "nameCn": "Our Free Model",
+    "repoName": "our-free-model-deploy-guide",
+    "oneLiner": "给 DeepSeek Harness 用的免费模型插件",
+    "officialRepo": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
+    "officialDocs": "https://github.com/Ebony-Vinyl/dsh-our-free-model#安装",
+    "stars": "43.4k",
+    "license": "MIT",
+    "highlights": [
+      "免登录：装完直接在模型选择器里选，不用注册、不用填 Key",
+      "清单跟随上游：每次刷新重新拉取，被网关明确拒绝路由的模型会自动移出选择器",
+      "本地转发：提供 OpenAI 兼容端口，其它工具填 base URL + Key 即可调用",
+      "附带用量看板、公告中心与应用内升级（下载 → SHA256 校验 → 备份 → 原子替换 → 失败回滚）"
+    ],
+    "mcpSupport": "这个项目是 dsh 插件，不是 MCP server；它提供的是模型车道与本地 OpenAI 兼容网关。本仓库的 MCP 只提供安装步骤、前置条件与常见坑。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-26",
+    "verification": [
+      [
+        "Release tarball 下载并核对 SHA256SUMS 一致（36.4 MB）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "本机未安装 dsh，安装前置检查按预期报错",
+        "已验证 2026-10-26"
+      ],
+      [
+        "MCP 服务握手与工具列表（initialize / tools/list）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-26"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "node"
+      ],
+      "steps": [
+        "command -v dsh >/dev/null 2>&1 || { echo \"需要先安装 DeepSeek Harness（dsh）\"; exit 1; }",
+        "git clone https://github.com/Ebony-Vinyl/dsh-our-free-model",
+        "dsh plugin --profile web add \"$PWD/dsh-our-free-model\""
+      ],
+      "stepsPs": [
+        "if (-not (Get-Command dsh -ErrorAction SilentlyContinue)) { throw '需要先安装 DeepSeek Harness（dsh）' }",
+        "git clone https://github.com/Ebony-Vinyl/dsh-our-free-model",
+        "dsh plugin --profile web add \"$PWD\\dsh-our-free-model\""
+      ],
+      "source": "https://github.com/Ebony-Vinyl/dsh-our-free-model#安装"
+    },
+    "pitfalls": [
+      "报 `dsh: command not found`：先装 DeepSeek Harness，本插件不能单独运行",
+      "不要执行 `npm install dsh-our-free-model`：README 明确说 npm 上的同名包是第三方打包、内容不一致",
+      "装完没生效：重启一次客户端；profile 不是 web 的（如 dsh-tui）要把 `--profile web` 换成实际名称",
+      "桌面整合包报 `PROFILE_UPGRADE_REQUIRED`：别用 link: 依赖或 junction，改用应用内插件管理器或 Release tarball",
+      "手工复制文件时必须整包复制（含 adapter/、src/、locale/、vendor/channel-pack/），只复制入口脚本会导致渠道加载失败",
+      "不要再往 cordis.patch.yml 加条目，会报 duplicate loader entry id",
+      "免费上游可能限流或调整模型，可用性以设置页探测结果为准；不要发敏感内容"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/our-free-model-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/our-free-model-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "dsh 免费模型",
+    "dsh-our-free-model",
+    "DeepSeek Harness 插件",
+    "dsh 插件安装",
+    "免费 API",
+    "DeepSeek V4.1 Flash",
+    "Kimi K3",
+    "dsh 免登录",
+    "Our Free Model 教程",
+    "dsh plugin deploy guide"
+  ],
+  "topics": [
+    "dsh",
+    "dsh-plugin",
+    "free-model",
+    "deepseek",
+    "llm",
+    "ai-agents",
+    "openai-compatible"
+  ]
+}

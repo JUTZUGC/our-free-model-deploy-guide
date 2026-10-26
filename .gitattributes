@@ -1,0 +1,4 @@
+# 统一换行符，避免 Windows 下提交后 shell 脚本在 Linux/macOS 上因 CRLF 无法执行
+* text=auto
+*.sh text eol=lf
+*.mjs text eol=lf
