@@ -8,7 +8,7 @@
     "oneLiner": "给 DeepSeek Harness 用的免费模型插件",
     "officialRepo": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
     "officialDocs": "https://github.com/Ebony-Vinyl/dsh-our-free-model#安装",
-    "stars": "43.4k",
+    "stars": "47.9k",
     "license": "MIT",
     "highlights": [
       "免登录：装完直接在模型选择器里选，不用注册、不用填 Key",
@@ -19,7 +19,7 @@
     "mcpSupport": "这个项目是 dsh 插件，不是 MCP server；它提供的是模型车道与本地 OpenAI 兼容网关。本仓库的 MCP 只提供安装步骤、前置条件与常见坑。",
     "webuiUrl": "",
     "adapterPorts": "",
-    "collectedAt": "2026-10-26",
+    "collectedAt": "2026-10-28",
     "verification": [
       [
         "Release tarball 下载并核对 SHA256SUMS 一致（36.4 MB）",
